@@ -132,7 +132,6 @@ CoGe-GCD 在六个标准 GCD benchmark 上进行评估：CUB-200、Stanford Cars
 
 <div align="center">
 <img src="assets/primitives_air.jpg" alt="FGVC-Aircraft primitive visualization" width="48%">
-<img src="assets/primitives_cub.jpg" alt="CUB-200 primitive visualization" width="48%">
 <img src="assets/primitives_imagenet.jpg" alt="ImageNet-100 primitive visualization" width="48%">
 <img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="48%">
 <em>在每个数据集中，固定的 primitive index 会在不同图像中关注相似区域。</em>
