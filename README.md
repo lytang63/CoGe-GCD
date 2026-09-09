@@ -153,22 +153,31 @@ The implementation uses Python 3.9+, PyTorch 2.0+, torchvision, timm, NumPy, Sci
 
 ## ⚡ Quick start
 
-Run commands from the repository root. Dataset and checkpoint locations are configured through `config.py` or `COGE_*` environment variables; see the full [usage guide](#-paths-and-data-preparation) below.
+Run one command per dataset from the repository root. The wrapper follows the SelEx workflow: it launches representation learning and performs the in-training clustering checks and disjoint-test evaluation automatically. There is no separate test command in the standard reproduction path.
 
 ```bash
-# Train the GCD representation
+# Use the same entry point for every benchmark
+bash bash_scripts/contrastive_train.sh cub
+bash bash_scripts/contrastive_train.sh scars
+bash bash_scripts/contrastive_train.sh aircraft
+bash bash_scripts/contrastive_train.sh cifar10
 bash bash_scripts/contrastive_train.sh cifar100
-
-# Extract features from a trained checkpoint
-export WARMUP_MODEL_DIR=/path/to/checkpoints/
-bash bash_scripts/extract_feats.sh cub
-
-# Cluster and evaluate
-bash bash_scripts/k_means.sh cub
-
-# Estimate the number of categories
-bash bash_scripts/estimate_k.sh cub
+bash bash_scripts/contrastive_train.sh imagenet_100
 ```
+
+The first positional argument selects the dataset. Additional arguments are forwarded to the Python runner, so dataset-specific settings can be supplied without editing the script:
+
+```bash
+# Semantic Shift Benchmark settings
+bash bash_scripts/contrastive_train.sh cub --unsupervised_smoothing 1.0
+bash bash_scripts/contrastive_train.sh scars --unsupervised_smoothing 1.0 --grad_from_block 9
+bash bash_scripts/contrastive_train.sh aircraft --unsupervised_smoothing 0.5
+
+# Generic datasets use the wrapper default (0.1)
+bash bash_scripts/contrastive_train.sh cifar100 --epochs 200
+```
+
+During training, the runner evaluates the disjoint test split every epoch and reports the unlabeled-train split at the configured report interval. At the end of the run it prints the final report and records the best and last checkpoints. The optional scripts under `bash_scripts/` are retained for feature export or standalone diagnostics; they are not required for the normal train-and-evaluate workflow.
 
 ## 🗂️ Paths and data preparation
 

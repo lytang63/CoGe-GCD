@@ -151,22 +151,31 @@ pip install -r requirements.txt
 
 ## ⚡ Quick start
 
-请在 repository root 下运行以下命令。数据集和 checkpoint 路径可通过 `config.py` 或 `COGE_*` 环境变量配置。
+请在 repository root 下针对每个数据集运行同一个入口。该 wrapper 遵循 SelEx 的工作流：启动 representation learning，并在训练过程中自动完成 clustering 检查和 disjoint-test evaluation。标准复现实验不需要额外的测试命令。
 
 ```bash
-# 训练 GCD representation
+# 所有 benchmark 使用同一个入口
+bash bash_scripts/contrastive_train.sh cub
+bash bash_scripts/contrastive_train.sh scars
+bash bash_scripts/contrastive_train.sh aircraft
+bash bash_scripts/contrastive_train.sh cifar10
 bash bash_scripts/contrastive_train.sh cifar100
-
-# 从训练好的 checkpoint 提取特征
-export WARMUP_MODEL_DIR=/path/to/checkpoints/
-bash bash_scripts/extract_feats.sh cub
-
-# 聚类与评估
-bash bash_scripts/k_means.sh cub
-
-# 估计类别数
-bash bash_scripts/estimate_k.sh cub
+bash bash_scripts/contrastive_train.sh imagenet_100
 ```
+
+第一个位置参数选择数据集。其后的参数会原样转发给 Python runner，因此无需修改脚本即可覆盖数据集特定设置：
+
+```bash
+# Semantic Shift Benchmark 设置
+bash bash_scripts/contrastive_train.sh cub --unsupervised_smoothing 1.0
+bash bash_scripts/contrastive_train.sh scars --unsupervised_smoothing 1.0 --grad_from_block 9
+bash bash_scripts/contrastive_train.sh aircraft --unsupervised_smoothing 0.5
+
+# 通用数据集使用 wrapper 默认值（0.1）
+bash bash_scripts/contrastive_train.sh cifar100 --epochs 200
+```
+
+训练过程中，runner 每个 epoch 都会在 disjoint test split 上评估，并按配置的 report interval 汇报 unlabeled-train split。训练结束后会打印 final report，并保存 best/last checkpoint。`bash_scripts/` 下的其他脚本保留用于特征导出或独立诊断；标准的 train-and-evaluate 流程不需要单独调用它们。
 
 ## 🗂️ 数据路径配置
 

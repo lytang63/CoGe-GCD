@@ -847,16 +847,16 @@ if __name__ == "__main__":
     torch.cuda.empty_cache()
     if args.report:
         print("Reports for the best checkpoint:")
-        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python ../clustering/extract_features.py --dataset "+args.dataset_name+
-                  " --warmup_model_dir "+ args.model_path.replace('(','\(').replace(')','\)').replace('|','\|'))
-        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python ../clustering/k_means.py --dataset "+args.dataset_name+
-                  " --unbalanced "+str(int(args.unbalanced)))
+        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python -m methods.clustering.extract_features --dataset "+args.dataset_name+
+                  " --use_composition True --warmup_model_dir "+ args.model_path.replace('(','\(').replace(')','\)').replace('|','\|'))
+        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python -m methods.clustering.k_means --dataset_name "+args.dataset_name+
+                  " --use_composition True --unbalanced "+str(int(args.unbalanced)))
         print("Reports for the last checkpoint:")
-        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python ../clustering/extract_features.py --dataset "+args.dataset_name+
-                  " --warmup_model_dir "+ args.model_path.replace('(','\(').replace(')','\)').replace('|','\|')+
+        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python -m methods.clustering.extract_features --dataset "+args.dataset_name+
+                  " --use_composition True --warmup_model_dir "+ args.model_path.replace('(','\(').replace(')','\)').replace('|','\|')+
                   "  --use_best_model 0")
-        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python ../clustering/k_means.py --dataset "+args.dataset_name+
-                  " --unbalanced "+str(int(args.unbalanced)))
+        os.system("CUDA_VISIBLE_DEVICES="+str(args.gpu_id)+" python -m methods.clustering.k_means --dataset_name "+args.dataset_name+
+                  " --use_composition True --unbalanced "+str(int(args.unbalanced)))
 
     torch.cuda.empty_cache()
     print(args.model_path)
