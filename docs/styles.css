@@ -1211,13 +1211,16 @@ a.project-link:hover {
 
 .evidence-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .evidence-card,
 .result-figure {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line-strong);
@@ -1233,6 +1236,11 @@ a.project-link:hover {
   background: #fff;
 }
 
+.evidence-card img {
+  height: 230px;
+  object-fit: contain;
+}
+
 .evidence-card figcaption,
 .result-figure figcaption {
   padding: 15px 17px 18px;
@@ -1241,13 +1249,13 @@ a.project-link:hover {
   line-height: 1.6;
 }
 
+.evidence-card figcaption {
+  flex: 1;
+}
+
 .evidence-card figcaption strong {
   display: block;
   margin-bottom: 3px;
-}
-
-.evidence-card-large {
-  grid-row: span 2;
 }
 
 .results-section {
@@ -1391,11 +1399,6 @@ a.project-link:hover {
     grid-template-columns: 1fr 1fr;
   }
 
-  .evidence-card-large {
-    grid-column: 1 / -1;
-    grid-row: auto;
-  }
-
   .metric-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1407,10 +1410,6 @@ a.project-link:hover {
   .metric-grid,
   .compat-grid {
     grid-template-columns: 1fr;
-  }
-
-  .evidence-card-large {
-    grid-column: auto;
   }
 
   .compat-arrow {

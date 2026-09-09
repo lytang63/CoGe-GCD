@@ -133,9 +133,9 @@ The qualitative and spectral analyses show tighter discovered structure, lower e
 Across samples—and even across categories—the same primitive index tends to attend to semantically corresponding regions. This cross-sample consistency suggests that primitives behave as reusable visual evidence rather than image-specific attention blobs.
 
 <div align="center">
-<img src="assets/primitives_air.jpg" alt="FGVC-Aircraft primitive visualization" width="48%">
-<img src="assets/primitives_imagenet.jpg" alt="ImageNet-100 primitive visualization" width="48%">
-<img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="48%">
+<img src="assets/primitives_air.jpg" alt="FGVC-Aircraft primitive visualization" width="78%"><br>
+<img src="assets/primitives_imagenet.jpg" alt="ImageNet-100 primitive visualization" width="78%"><br>
+<img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="78%">
 <em>Within each dataset, a fixed primitive index tracks similar regions across different images.</em>
 </div>
 
