@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoGe-GCD · 组合泛化驱动的广义类别发现</title>
+    <meta name="description" content="CoGe-GCD: Reframing Generalized Category Discovery with Compositional Generalization." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="alternate" hreflang="en" href="../" />
+    <link rel="stylesheet" href="../styles.css?v=20260909-1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero-block">
+        <nav class="language-switch" aria-label="语言选择"><a href="../" lang="en">EN</a><span aria-hidden="true"></span><a class="active" href="./" lang="zh-CN" aria-current="page">中文</a></nav>
+        <div class="container narrow">
+          <div class="award-showcase" aria-label="ICML 2026 论文">
+            <div class="award-emblem" aria-hidden="true"><span class="award-spark">✦</span><span class="award-trophy">◆</span><span class="award-spark">✦</span></div>
+            <div class="award-copy"><span class="award-event">ICML 2026 · 43rd International Conference on Machine Learning</span><strong>Accepted Paper</strong><span class="award-oral">Proceedings of Machine Learning Research · PMLR 306</span></div>
+          </div>
+          <h1>CoGe-GCD</h1>
+          <p class="subtitle">Reframing Generalized Category Discovery with Compositional Generalization</p>
+          <div class="authors" aria-label="论文作者"><span>Luyao Tang</span>、<span>Jiewei Zheng</span>、<span>Kunze Huang</span>、<span>Chaoqi Chen</span>、<span>Yue Huang</span>、<span>Cheng Chen</span></div>
+          <p class="venue-line">The University of Hong Kong · Xiamen University · Shenzhen University</p>
+          <div class="project-links" aria-label="项目资源">
+            <a class="project-link" href="../CoGe-GCD-paper.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span><span>论文</span></a>
+            <a class="project-link" href="https://github.com/lytang63/CoGe-GCD" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span><span>代码</span></a>
+            <a class="project-link" href="https://github.com/lytang63/CoGe-GCD#-why-coge-gcd" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span><span>项目主页</span></a>
+            <a class="project-link" href="#citation"><span aria-hidden="true">{ }</span><span>BibTeX</span></a>
+          </div>
+          <p class="lede">广义类别发现需要在带标签与无标签图像混合的开放世界中，同时识别 <strong>known</strong> 与 <strong>novel</strong> 类别。CoGe-GCD 进一步追问：模型能否复用已经学到的视觉原语，并通过它们的新组合发现新类别？</p>
+          <div class="hero-proof" aria-label="CoGe-GCD 核心贡献">
+            <div class="proof-card fragmented"><span class="proof-icon" aria-hidden="true">🧩</span><strong>Compositional Perception</strong><span>将 patch evidence 组织为紧凑、可复用的 primitive 词汇。</span></div>
+            <div class="proof-card balanced"><span class="proof-icon" aria-hidden="true">◎</span><strong>Generalizing Induction</strong><span>校准诱导出的几何结构，使 known-to-novel 外推保持有序。</span></div>
+            <div class="proof-card over-mixed"><span class="proof-icon" aria-hidden="true">🔌</span><strong>Drop-in Interface</strong><span>置于视觉 backbone 与任意现有 GCD head 之间即可使用。</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="text-section first-section"><div class="container narrow prose"><h2>一句话概括</h2><p>CoGe-GCD 将 GCD 重新表述为组合泛化问题：先把 patch tokens 变成相互竞争、由图像上下文决定的 primitives，再保留它们的空间与关系几何，最后交给原有 GCD head 做 known/novel 判断。Backbone、训练目标、聚类协议与 head 均无需改变。</p></div></section>
+
+        <section class="core-insight-section"><div class="container wide"><div class="section-heading core-insight-heading"><p class="section-kicker">💡 核心洞见</p><h2>Novel 类别是新的组合，而不是任意的点云。</h2><p>开放世界中的类别可能是陌生的，但组成它的部件、属性和关系并不陌生。因此，发现过程需要一条从感知组织到归纳外推的显式链路。</p></div><div class="insight-flow" aria-label="CoGe-GCD 流程"><div class="insight-step"><span class="insight-icon" aria-hidden="true">◌</span><div><strong>Patch evidence</strong><span>Backbone 暴露局部 token，但它们仍缺少结构化组织。</span></div></div><span class="flow-arrow" aria-hidden="true">→</span><div class="insight-step"><span class="insight-icon" aria-hidden="true">✦</span><div><strong>Reusable primitives</strong><span>竞争与证据传递把 token 变成连贯的 soft groups。</span></div></div><span class="flow-arrow" aria-hidden="true">→</span><div class="insight-step"><span class="insight-icon" aria-hidden="true">⌁</span><div><strong>Inductive discovery</strong><span>几何保持校准支持将已知 primitive 组合到新类别。</span></div></div></div><div class="keyword-row" aria-label="核心属性"><span>🧠 Human-inspired</span><span>🔌 Plug-and-play</span><span>🧩 Compositional</span><span>🌍 Open-world ready</span></div></div></section>
+
+        <section class="overview-band"><div class="container wide overview-grid"><div class="overview-copy"><h3>为什么 GCD 需要结构</h3><p>整体 embedding 往往隐藏了“为什么 novel 类别合理”的中间证据。CoGe-GCD 在聚类前把这部分证据显式化。</p></div><div class="overview-copy"><h3>模型学习什么</h3><p>一组由图像上下文决定的 primitive 竞争 token 支持，并通过 soft memberships 形成高阶 token–primitive 几何。</p></div><div class="overview-copy"><h3>哪些部分保持不变</h3><p>CoGe-GCD 是 backbone 与 projection head 之间的 inductive-bias 模块；原有 loss、optimizer、head 与 clustering 均可复用。</p></div></div></section>
+
+        <section class="figure-section"><div class="container narrow"><figure class="insight-figure"><a class="figure-link" href="../assets/method_overview.png" target="_blank" rel="noopener noreferrer"><img src="../assets/method_overview.png" alt="传统 GCD、朴素组合泛化与 CoGe-GCD 的流程对比。" /></a><figcaption><strong>重新定义发现流程。</strong> CoGe-GCD 将“<em>如何组织视觉证据</em>”与“<em>如何推断新颖性</em>”分离，使组合泛化真正进入 GCD。<a class="figure-download" href="../assets/method_overview.png" target="_blank" rel="noopener noreferrer">打开图片 <span aria-hidden="true">↗</span></a></figcaption></figure></div></section>
+
+        <section class="math-section"><div class="container narrow"><div class="section-heading math-heading"><p class="section-kicker">🧮 核心公式</p><h2>从潜在 primitive 到几何校准证据</h2><p>下面的公式对应论文中的两阶段设计：先构造组合表示，再保留归纳所需的几何结构。</p></div><div class="formula-grid"><article class="formula-card"><div class="formula-index">01</div><h3>潜在组合流形</h3><div class="equation equation-primary"><var>X</var> = <var>A</var><sup>∗</sup><var>P</var><sup>∗</sup> + <var>E</var></div><p>观测到的 patch features 由有限 primitive basis 与各向同性噪声生成，且 <var>M</var> ≪ min(<var>N</var>, <var>D</var>)。</p></article><article class="formula-card"><div class="formula-index">02</div><h3>Primitive competition</h3><div class="equation-stack"><div class="equation">Δ<var>P</var> = φ([avg(<var>X</var>), max(<var>X</var>)])</div><div class="equation"><var>P</var> = <var>P</var><sub>0</sub> + Δ<var>P</var></div><div class="equation equation-primary"><var>A</var><sub>i,m</sub> = exp(<var>S</var><sub>i,m</sub>/τ) / Σ<sub>k</sub> exp(<var>S</var><sub>k,m</sub>/τ)</div></div><p>每个 primitive 在 token 上分配单位概率质量，鼓励不同 primitive 专门化而非塌缩。</p></article><article class="formula-card formula-card-wide"><div class="formula-index">03</div><h3>Evidence consolidation</h3><div class="equation-stack"><div class="equation"><var>F</var> = <var>D</var><sub>f</sub><sup>−1</sup><var>A</var><sup>⊤</sup><var>X</var></div><div class="equation equation-primary"><var>X</var><sup>′</sup> = σ(<var>D</var><sub>t</sub><sup>−1</sup><var>A</var> σ(<var>D</var><sub>f</sub><sup>−1</sup><var>A</var><sup>⊤</sup><var>XW</var><sub>e</sub><sup>⊤</sup>)<var>W</var><sub>n</sub><sup>⊤</sup>)</div></div><p>信息沿 token → primitive → token 流动，在进入 GCD head 前放大连贯群组并抑制噪声关联。</p></article><article class="formula-card formula-card-wide"><div class="formula-index">04</div><h3>几何保持校准</h3><div class="equation-stack"><div class="equation"><var>G</var><sub>tok</sub> = <var>AA</var><sup>⊤</sup>, &nbsp; <var>G</var><sub>fac</sub> = <var>A</var><sup>⊤</sup><var>A</var></div><div class="equation">Π<sub>i,j</sub> ∝ exp(−‖<var>p</var><sub>i</sub> − <var>p</var><sub>j</sub>‖² / 2)</div><div class="equation equation-primary">Ã = ½(<var>A</var> + <var>G</var>(<var>A</var>))</div></div><p>在保持 column-stochastic 语义的同时注入 proximity 与 continuity，为 Generalizing Induction 提供结构化基底。</p></article></div></div></section>
+
+        <section class="evidence-section"><div class="container wide"><div class="section-heading"><p class="section-kicker">🔎 模型发现了什么</p><h2>Primitive 成为可复用的视觉证据。</h2><p>跨样本观察时，同一个 primitive index 往往关注语义上对应的区域。模型不再只能用一个整体 token 去解释每一张图像。</p></div><div class="evidence-grid"><figure class="evidence-card evidence-card-large"><img src="../assets/primitive_visualization.png" alt="SelEx、CoGe-GCD 与 primitive attention map 的可视化对比。" /><figcaption><strong>跨样本一致性。</strong> Primitive assignment 揭示了可在 novel 类别中重新组合的部件与结构。</figcaption></figure><figure class="evidence-card"><img src="../assets/attention.png" alt="SelEx 与 CoGe-GCD 的 effective rank 和 entropy 对比。" /><figcaption><strong>紧凑证据。</strong> CoGe-GCD 在细粒度数据集上降低了 effective rank 与谱分散度。</figcaption></figure><figure class="evidence-card"><img src="../assets/geometry.png" alt="CIFAR-100 上 SelEx 与 CoGe-GCD 的特征几何对比。" /><figcaption><strong>更清晰的几何。</strong> 诱导出的表示空间更有组织，更适合类别发现。</figcaption></figure></div></div></section>
+
+        <section class="figure-section soft-band"><div class="container narrow"><figure class="insight-figure"><a class="figure-link" href="../assets/pipeline.png" target="_blank" rel="noopener noreferrer"><img src="../assets/pipeline.png" alt="CoGe-GCD 详细流程：primitive competition、evidence consolidation 与 geometric calibration。" /></a><figcaption><strong>一个接口，两种能力。</strong> Compositional Perception 组织 token evidence；Generalizing Induction 在 GCD objective 前校准得到的几何结构。</figcaption></figure></div></section>
+
+        <section class="results-section" id="results"><div class="container wide"><div class="section-heading"><p class="section-kicker">📊 实验证据</p><h2>跨方案、跨尺度的稳定收益。</h2><p>CoGe-GCD 在 CUB-200、Stanford Cars、FGVC-Aircraft、CIFAR-10、CIFAR-100 和 ImageNet-100 上评估，同时保持原始 GCD protocol。</p></div><div class="metric-grid"><div class="metric-card"><strong>+4.03</strong><span>细粒度平均 All accuracy</span></div><div class="metric-card"><strong>+4.75</strong><span>细粒度平均 Novel accuracy</span></div><div class="metric-card"><strong>+1.07</strong><span>粗粒度平均 All accuracy</span></div><div class="metric-card"><strong>+1.60</strong><span>粗粒度平均 Novel accuracy</span></div></div><div class="results-figures"><figure class="result-figure"><img src="../assets/results_finegrained.png" alt="CUB-200、FGVC-Aircraft 与 Stanford-Cars 上的细粒度 GCD 结果表。" /><figcaption>细粒度 benchmark · Table 1</figcaption></figure><figure class="result-figure"><img src="../assets/results_coarse.png" alt="CIFAR-10、CIFAR-100 与 ImageNet-100 上的粗粒度 GCD 结果表。" /><figcaption>粗粒度 benchmark · Table 6</figcaption></figure></div></div></section>
+
+        <section class="compat-section"><div class="container wide"><div class="section-heading"><p class="section-kicker">🔌 可迁移的接口</p><h2>把同一个想法放进你熟悉的 GCD framework。</h2><p>模块位于 ViT-style backbone 与现有 projection/head 之间，可与 SimGCD、LegoGCD、CMS、SelEx 或其他兼容的 GCD pipeline 组合。</p></div><div class="compat-grid"><div class="compat-card"><span>01</span><strong>Backbone</strong><em>patch tokens <var>X</var> + CLS token</em></div><div class="compat-arrow" aria-hidden="true">→</div><div class="compat-card accent"><span>02</span><strong>CoGe-GCD</strong><em>primitives → evidence → geometry</em></div><div class="compat-arrow" aria-hidden="true">→</div><div class="compat-card"><span>03</span><strong>Existing GCD head</strong><em>loss 与 clustering 保持不变</em></div></div><div class="code-card"><div class="code-label">最小插入示例</div><pre><code>from models.compositional import CompositionalPerception
+
+coge = CompositionalPerception(embed_dim=768, num_primitives=16, num_heads=8)
+refined_tokens = coge(patch_tokens)  # [batch, num_patches, embed_dim]
+# 将 refined representation 接入现有 GCD projection/head</code></pre></div></div></section>
+
+        <section class="text-section"><div class="container narrow prose"><h2>开放世界视角</h2><p>“<strong>先组织证据，再推断新颖性</strong>”这一分离并不局限于单一 benchmark。它可以迁移到 continual discovery、domain-shifted discovery、open-world recognition 以及更多类别集合持续变化的任务中。我们期待研究者使用新的 backbone 与任务尝试这一接口，并分享反馈、失败案例和扩展方向。</p></div></section>
+
+        <section class="citation-section" id="citation"><div class="container narrow"><div class="section-heading"><p class="section-kicker">Reference</p><h2>Citation</h2><p>如果 CoGe-GCD 对你的研究有帮助，欢迎引用：</p></div><div class="citation-card"><button class="copy-button" type="button" aria-label="复制 BibTeX" data-default-label="复制 BibTeX" data-copied-label="已复制">复制 BibTeX</button><pre><code id="bibtex">@inproceedings{tangcoge,
+  title={CoGe-GCD: Reframing Generalized Category Discovery with Compositional Generalization},
+  author={Tang, Luyao and Zheng, Jiewei and Huang, Kunze and Chen, Chaoqi and Huang, Yue and Chen, Cheng},
+  booktitle={Forty-third International Conference on Machine Learning}
+}</code></pre><p class="copy-status" role="status" aria-live="polite" data-copied-message="BibTeX 已复制到剪贴板。"></p></div></div></section>
+      </main>
+      <footer class="site-footer"><div class="container narrow"><p>CoGe-GCD · ICML 2026 · <a href="https://github.com/lytang63/CoGe-GCD" target="_blank" rel="noopener noreferrer">GitHub</a></p></div></footer>
+    </div>
+    <script src="../script.js?v=20260909-1"></script>
+  </body>
+</html>

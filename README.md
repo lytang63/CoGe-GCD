@@ -17,7 +17,7 @@
 
 The University of Hong Kong · Xiamen University · Shenzhen University
 
-[Paper](ICML2026___CoGe_GCD__Reframing_Generalized_Category_Discovery_with_Compositional_Generalization__Camera_Ready_.pdf) · [Project page](https://github.com/lytang63/CoGe-GCD) · [arXiv ID pending](https://arxiv.org/) · [Quick start](#-quick-start)
+[Paper](ICML2026___CoGe_GCD__Reframing_Generalized_Category_Discovery_with_Compositional_Generalization__Camera_Ready_.pdf) · [Project page](https://lytang63.github.io/CoGe-GCD/) · [Code](https://github.com/lytang63/CoGe-GCD) · [arXiv ID pending](https://arxiv.org/) · [Quick start](#-quick-start)
 
 </div>
 

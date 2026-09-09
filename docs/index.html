@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoGe-GCD · Compositional Generalization for GCD</title>
+    <meta name="description" content="CoGe-GCD: Reframing Generalized Category Discovery with Compositional Generalization." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="alternate" hreflang="zh-CN" href="zh/" />
+    <link rel="stylesheet" href="styles.css?v=20260909-1" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero-block">
+        <nav class="language-switch" aria-label="Language selection">
+          <a class="active" href="./" lang="en" aria-current="page">EN</a>
+          <span aria-hidden="true"></span>
+          <a href="zh/" lang="zh-CN">中文</a>
+        </nav>
+        <div class="container narrow">
+          <div class="award-showcase" aria-label="ICML 2026 paper">
+            <div class="award-emblem" aria-hidden="true">
+              <span class="award-spark">✦</span><span class="award-trophy">◆</span><span class="award-spark">✦</span>
+            </div>
+            <div class="award-copy">
+              <span class="award-event">ICML 2026 · 43rd International Conference on Machine Learning</span>
+              <strong>Accepted Paper</strong>
+              <span class="award-oral">Proceedings of Machine Learning Research · PMLR 306</span>
+            </div>
+          </div>
+          <h1>CoGe-GCD</h1>
+          <p class="subtitle">Reframing Generalized Category Discovery with Compositional Generalization</p>
+          <div class="authors" aria-label="Paper authors">
+            <span>Luyao Tang</span>, <span>Jiewei Zheng</span>, <span>Kunze Huang</span>, <span>Chaoqi Chen</span>,
+            <span>Yue Huang</span>, <span>Cheng Chen</span>
+          </div>
+          <p class="venue-line">The University of Hong Kong · Xiamen University · Shenzhen University</p>
+          <div class="project-links" aria-label="Project resources">
+            <a class="project-link" href="CoGe-GCD-paper.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📄</span><span>Paper</span></a>
+            <a class="project-link" href="https://github.com/lytang63/CoGe-GCD" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span><span>Code</span></a>
+            <a class="project-link" href="https://github.com/lytang63/CoGe-GCD#-why-coge-gcd" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span><span>Project</span></a>
+            <a class="project-link" href="#citation"><span aria-hidden="true">{ }</span><span>BibTeX</span></a>
+          </div>
+          <p class="lede">
+            Generalized Category Discovery must recognize both <strong>known</strong> and <strong>novel</strong> categories from a
+            mixture of labeled and unlabeled images. CoGe-GCD asks a deeper question: can a model discover a new category by
+            reusing the visual primitives it already knows, and by reasoning over their new composition?
+          </p>
+          <div class="hero-proof" aria-label="CoGe-GCD contributions">
+            <div class="proof-card fragmented"><span class="proof-icon" aria-hidden="true">🧩</span><strong>Compositional Perception</strong><span>Organize patch evidence into a compact vocabulary of reusable primitives.</span></div>
+            <div class="proof-card balanced"><span class="proof-icon" aria-hidden="true">◎</span><strong>Generalizing Induction</strong><span>Calibrate the induced geometry so known-to-novel extrapolation remains structured.</span></div>
+            <div class="proof-card over-mixed"><span class="proof-icon" aria-hidden="true">🔌</span><strong>Drop-in Interface</strong><span>Insert the module between a visual backbone and any existing GCD head.</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="text-section first-section">
+          <div class="container narrow prose">
+            <h2>TL;DR</h2>
+            <p>
+              CoGe-GCD reframes GCD as a compositional generalization problem. It first turns patch tokens into competing,
+              image-conditioned primitives, then preserves their spatial and relational geometry before the original GCD head
+              makes a known/novel decision. The backbone, objective, clustering protocol and head remain unchanged.
+            </p>
+          </div>
+        </section>
+
+        <section class="core-insight-section">
+          <div class="container wide">
+            <div class="section-heading core-insight-heading">
+              <p class="section-kicker">💡 Core insight</p>
+              <h2>Novel categories are new compositions, not arbitrary point clouds.</h2>
+              <p>
+                In an open world, a category can be unfamiliar while its parts, attributes and relations are familiar. A
+                discovery model therefore needs an explicit chain from perceptual organization to inductive extrapolation.
+              </p>
+            </div>
+            <div class="insight-flow" aria-label="CoGe-GCD workflow">
+              <div class="insight-step"><span class="insight-icon" aria-hidden="true">◌</span><div><strong>Patch evidence</strong><span>Backbones expose local tokens, but their structure is still unorganized.</span></div></div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="insight-step"><span class="insight-icon" aria-hidden="true">✦</span><div><strong>Reusable primitives</strong><span>Competition and evidence passing turn tokens into coherent soft groups.</span></div></div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="insight-step"><span class="insight-icon" aria-hidden="true">⌁</span><div><strong>Inductive discovery</strong><span>Geometry-preserving calibration supports new combinations for the GCD head.</span></div></div>
+            </div>
+            <div class="keyword-row" aria-label="Core properties">
+              <span>🧠 Human-inspired</span><span>🔌 Plug-and-play</span><span>🧩 Compositional</span><span>🌍 Open-world ready</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="overview-band">
+          <div class="container wide overview-grid">
+            <div class="overview-copy"><h3>Why GCD needs structure</h3><p>Holistic embeddings can hide the intermediate evidence that explains why a novel category is plausible. CoGe-GCD makes that evidence explicit before clustering.</p></div>
+            <div class="overview-copy"><h3>What is learned</h3><p>A small, image-conditioned primitive vocabulary competes for token support. Its soft memberships create a higher-order token–primitive geometry.</p></div>
+            <div class="overview-copy"><h3>What stays untouched</h3><p>CoGe-GCD is an inductive-bias module between backbone and projection head. Existing losses, optimizers, heads and clustering remain reusable.</p></div>
+          </div>
+        </section>
+
+        <section class="figure-section">
+          <div class="container narrow">
+            <figure class="insight-figure">
+              <a class="figure-link" href="assets/method_overview.png" target="_blank" rel="noopener noreferrer" aria-label="Open CoGe-GCD overview figure">
+                <img src="assets/method_overview.png" alt="Comparison of conventional GCD, naive compositional generalization, and CoGe-GCD with compositional perception and generalizing induction." />
+              </a>
+              <figcaption><strong>The reframing.</strong> CoGe-GCD separates <em>how visual evidence is organized</em> from <em>how novelty is inferred</em>, making compositional generalization operational inside GCD. <a class="figure-download" href="assets/method_overview.png" target="_blank" rel="noopener noreferrer">Open figure <span aria-hidden="true">↗</span></a></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="math-section">
+          <div class="container narrow">
+            <div class="section-heading math-heading"><p class="section-kicker">🧮 Core formulation</p><h2>From latent primitives to calibrated evidence</h2><p>The equations below mirror the paper's two-stage design: build a compositional representation, then preserve the geometry needed for induction.</p></div>
+            <div class="formula-grid">
+              <article class="formula-card"><div class="formula-index">01</div><h3>Latent compositional manifold</h3><div class="equation equation-primary"><var>X</var> = <var>A</var><sup>∗</sup><var>P</var><sup>∗</sup> + <var>E</var></div><p>Observed patch features are generated from a finite primitive basis plus isotropic noise, with <var>M</var> ≪ min(<var>N</var>, <var>D</var>).</p></article>
+              <article class="formula-card"><div class="formula-index">02</div><h3>Primitive competition</h3><div class="equation-stack"><div class="equation">Δ<var>P</var> = φ([avg(<var>X</var>), max(<var>X</var>)])</div><div class="equation"><var>P</var> = <var>P</var><sub>0</sub> + Δ<var>P</var></div><div class="equation equation-primary"><var>A</var><sub>i,m</sub> = exp(<var>S</var><sub>i,m</sub>/τ) / Σ<sub>k</sub> exp(<var>S</var><sub>k,m</sub>/τ)</div></div><p>Each primitive receives unit probability mass over tokens, encouraging specialization instead of collapse.</p></article>
+              <article class="formula-card formula-card-wide"><div class="formula-index">03</div><h3>Evidence consolidation</h3><div class="equation-stack"><div class="equation"><var>F</var> = <var>D</var><sub>f</sub><sup>−1</sup><var>A</var><sup>⊤</sup><var>X</var></div><div class="equation equation-primary"><var>X</var><sup>′</sup> = σ(<var>D</var><sub>t</sub><sup>−1</sup><var>A</var> σ(<var>D</var><sub>f</sub><sup>−1</sup><var>A</var><sup>⊤</sup><var>XW</var><sub>e</sub><sup>⊤</sup>)<var>W</var><sub>n</sub><sup>⊤</sup>)</div></div><p>Information flows token → primitive → token, amplifying coherent groups and attenuating noisy associations before the GCD head.</p></article>
+              <article class="formula-card formula-card-wide"><div class="formula-index">04</div><h3>Geometry-preserving calibration</h3><div class="equation-stack"><div class="equation"><var>G</var><sub>tok</sub> = <var>AA</var><sup>⊤</sup>, &nbsp; <var>G</var><sub>fac</sub> = <var>A</var><sup>⊤</sup><var>A</var></div><div class="equation">Π<sub>i,j</sub> ∝ exp(−‖<var>p</var><sub>i</sub> − <var>p</var><sub>j</sub>‖² / 2)</div><div class="equation equation-primary">Ã = ½(<var>A</var> + <var>G</var>(<var>A</var>))</div></div><p>Proximity and continuity are injected while column-stochastic semantics are preserved, producing a structured substrate for generalizing induction.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section">
+          <div class="container wide">
+            <div class="section-heading"><p class="section-kicker">🔎 What the model discovers</p><h2>Primitives become reusable visual evidence.</h2><p>Across samples, a fixed primitive index tends to attend to semantically corresponding regions. The model is no longer forced to explain every image with one holistic token.</p></div>
+            <div class="evidence-grid">
+              <figure class="evidence-card evidence-card-large"><img src="assets/primitive_visualization.png" alt="Primitive visualization comparing SelEx, CoGe-GCD and primitive attention maps." /><figcaption><strong>Cross-sample consistency.</strong> Primitive assignments reveal recurring parts and structures that can be recombined for novel categories.</figcaption></figure>
+              <figure class="evidence-card"><img src="assets/attention.png" alt="Effective rank and entropy comparison between SelEx and CoGe-GCD." /><figcaption><strong>Compact evidence.</strong> CoGe-GCD reduces effective rank and spectral dispersion on fine-grained datasets.</figcaption></figure>
+              <figure class="evidence-card"><img src="assets/geometry.png" alt="CIFAR-100 feature geometry with SelEx and CoGe-GCD." /><figcaption><strong>Cleaner geometry.</strong> The induced representation forms a more organized space for category discovery.</figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="figure-section soft-band">
+          <div class="container narrow"><figure class="insight-figure"><a class="figure-link" href="assets/pipeline.png" target="_blank" rel="noopener noreferrer"><img src="assets/pipeline.png" alt="Detailed CoGe-GCD pipeline showing primitive competition, evidence consolidation, and geometric calibration." /></a><figcaption><strong>One interface, two capabilities.</strong> Compositional Perception structures token evidence; Generalizing Induction calibrates the resulting geometry before any GCD objective is applied.</figcaption></figure></div>
+        </section>
+
+        <section class="results-section" id="results">
+          <div class="container wide">
+            <div class="section-heading"><p class="section-kicker">📊 Empirical evidence</p><h2>Consistent gains across schemes and scales.</h2><p>CoGe-GCD is evaluated on CUB-200, Stanford Cars, FGVC-Aircraft, CIFAR-10, CIFAR-100 and ImageNet-100, while retaining the original GCD protocol.</p></div>
+            <div class="metric-grid"><div class="metric-card"><strong>+4.03</strong><span>Fine-grained average All accuracy</span></div><div class="metric-card"><strong>+4.75</strong><span>Fine-grained average Novel accuracy</span></div><div class="metric-card"><strong>+1.07</strong><span>Coarse-grained average All accuracy</span></div><div class="metric-card"><strong>+1.60</strong><span>Coarse-grained average Novel accuracy</span></div></div>
+            <div class="results-figures"><figure class="result-figure"><img src="assets/results_finegrained.png" alt="Fine-grained GCD results table across CUB-200, FGVC-Aircraft and Stanford-Cars." /><figcaption>Fine-grained benchmarks · Table 1</figcaption></figure><figure class="result-figure"><img src="assets/results_coarse.png" alt="Coarse-grained GCD results table across CIFAR-10, CIFAR-100 and ImageNet-100." /><figcaption>Coarse-grained benchmarks · Table 6</figcaption></figure></div>
+          </div>
+        </section>
+
+        <section class="compat-section">
+          <div class="container wide"><div class="section-heading"><p class="section-kicker">🔌 Built to travel</p><h2>Use the same idea inside your favorite GCD framework.</h2><p>The module is designed as a lightweight insertion point between a ViT-style backbone and the existing projection/head. It can be paired with SimGCD, LegoGCD, CMS, SelEx or another compatible GCD pipeline.</p></div><div class="compat-grid"><div class="compat-card"><span>01</span><strong>Backbone</strong><em>patch tokens <var>X</var> + CLS token</em></div><div class="compat-arrow" aria-hidden="true">→</div><div class="compat-card accent"><span>02</span><strong>CoGe-GCD</strong><em>primitives → evidence → geometry</em></div><div class="compat-arrow" aria-hidden="true">→</div><div class="compat-card"><span>03</span><strong>Existing GCD head</strong><em>unchanged loss and clustering</em></div></div><div class="code-card"><div class="code-label">Minimal insertion</div><pre><code>from models.compositional import CompositionalPerception
+
+coge = CompositionalPerception(embed_dim=768, num_primitives=16, num_heads=8)
+refined_tokens = coge(patch_tokens)  # [batch, num_patches, embed_dim]
+# feed the refined representation to your existing GCD projection/head</code></pre></div></div>
+        </section>
+
+        <section class="text-section"><div class="container narrow prose"><h2>Open-world perspective</h2><p>The central separation—<strong>organize evidence first, infer novelty second</strong>—is intentionally broader than one benchmark. It offers a reusable interface for continual discovery, domain-shifted discovery, open-world recognition and other tasks whose category inventory evolves over time. We hope researchers will try the interface with new backbones and tasks, and share feedback, failure cases and extensions.</p></div></section>
+
+        <section class="citation-section" id="citation"><div class="container narrow"><div class="section-heading"><p class="section-kicker">Reference</p><h2>Citation</h2><p>If CoGe-GCD is useful for your research, please cite:</p></div><div class="citation-card"><button class="copy-button" type="button" aria-label="Copy BibTeX citation" data-default-label="Copy BibTeX" data-copied-label="Copied">Copy BibTeX</button><pre><code id="bibtex">@inproceedings{tangcoge,
+  title={CoGe-GCD: Reframing Generalized Category Discovery with Compositional Generalization},
+  author={Tang, Luyao and Zheng, Jiewei and Huang, Kunze and Chen, Chaoqi and Huang, Yue and Chen, Cheng},
+  booktitle={Forty-third International Conference on Machine Learning}
+}</code></pre><p class="copy-status" role="status" aria-live="polite" data-copied-message="BibTeX copied to clipboard."></p></div></div></section>
+      </main>
+      <footer class="site-footer"><div class="container narrow"><p>CoGe-GCD · ICML 2026 · <a href="https://github.com/lytang63/CoGe-GCD" target="_blank" rel="noopener noreferrer">GitHub</a></p></div></footer>
+    </div>
+    <script src="script.js?v=20260909-1"></script>
+  </body>
+</html>
