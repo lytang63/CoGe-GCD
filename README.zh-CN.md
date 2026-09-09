@@ -131,10 +131,10 @@ CoGe-GCD 在六个标准 GCD benchmark 上进行评估：CUB-200、Stanford Cars
 在不同样本之间，即使图像属于不同类别，相同 primitive index 也倾向于关注语义上对应的区域。这种跨样本一致性说明 primitive 更像是可复用的视觉 evidence，而不是只对单张图像有效的 attention pattern。
 
 <div align="center">
-![FGVC-Aircraft primitive visualization](assets/primitives_air.jpg)
-![CUB-200 primitive visualization](assets/primitives_cub.jpg)
-![ImageNet-100 primitive visualization](assets/primitives_imagenet.jpg)
-![Stanford Cars primitive visualization](assets/primitives_scars.jpg)
+<img src="assets/primitives_air.jpg" alt="FGVC-Aircraft primitive visualization" width="48%">
+<img src="assets/primitives_cub.jpg" alt="CUB-200 primitive visualization" width="48%">
+<img src="assets/primitives_imagenet.jpg" alt="ImageNet-100 primitive visualization" width="48%">
+<img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="48%">
 <em>在每个数据集中，固定的 primitive index 会在不同图像中关注相似区域。</em>
 </div>
 
