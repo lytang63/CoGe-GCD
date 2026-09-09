@@ -135,7 +135,7 @@ Across samples—and even across categories—the same primitive index tends to 
 <div align="center">
 <img src="assets/primitives_air.jpg" alt="FGVC-Aircraft primitive visualization" width="78%"><br>
 <img src="assets/primitives_imagenet.jpg" alt="ImageNet-100 primitive visualization" width="78%"><br>
-<img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="78%">
+<img src="assets/primitives_scars.jpg" alt="Stanford Cars primitive visualization" width="78%"><br>
 <em>Within each dataset, a fixed primitive index tracks similar regions across different images.</em>
 </div>
 
