@@ -163,17 +163,7 @@ bash bash_scripts/contrastive_train.sh cifar100
 bash bash_scripts/contrastive_train.sh imagenet_100
 ```
 
-第一个位置参数选择数据集。其后的参数会原样转发给 Python runner，因此无需修改脚本即可覆盖数据集特定设置：
-
-```bash
-# Semantic Shift Benchmark 设置
-bash bash_scripts/contrastive_train.sh cub --unsupervised_smoothing 1.0
-bash bash_scripts/contrastive_train.sh scars --unsupervised_smoothing 1.0 --grad_from_block 9
-bash bash_scripts/contrastive_train.sh aircraft --unsupervised_smoothing 0.5
-
-# 通用数据集使用 wrapper 默认值（0.1）
-bash bash_scripts/contrastive_train.sh cifar100 --epochs 200
-```
+关于数据集特定的超参数、数据准备细节和评估约定，请参考原始的 [SelEx repository](https://github.com/sarahrastegar/selex) 及其配套论文。
 
 训练过程中，runner 每个 epoch 都会在 disjoint test split 上评估，并按配置的 report interval 汇报 unlabeled-train split。训练结束后会打印 final report，并保存 best/last checkpoint。`bash_scripts/` 下的其他脚本保留用于特征导出或独立诊断；标准的 train-and-evaluate 流程不需要单独调用它们。
 

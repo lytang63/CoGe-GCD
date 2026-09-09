@@ -165,17 +165,7 @@ bash bash_scripts/contrastive_train.sh cifar100
 bash bash_scripts/contrastive_train.sh imagenet_100
 ```
 
-The first positional argument selects the dataset. Additional arguments are forwarded to the Python runner, so dataset-specific settings can be supplied without editing the script:
-
-```bash
-# Semantic Shift Benchmark settings
-bash bash_scripts/contrastive_train.sh cub --unsupervised_smoothing 1.0
-bash bash_scripts/contrastive_train.sh scars --unsupervised_smoothing 1.0 --grad_from_block 9
-bash bash_scripts/contrastive_train.sh aircraft --unsupervised_smoothing 0.5
-
-# Generic datasets use the wrapper default (0.1)
-bash bash_scripts/contrastive_train.sh cifar100 --epochs 200
-```
+For dataset-specific hyperparameters, data preparation details and evaluation conventions, please refer to the original [SelEx repository](https://github.com/sarahrastegar/selex) and its accompanying paper.
 
 During training, the runner evaluates the disjoint test split every epoch and reports the unlabeled-train split at the configured report interval. At the end of the run it prints the final report and records the best and last checkpoints. The optional scripts under `bash_scripts/` are retained for feature export or standalone diagnostics; they are not required for the normal train-and-evaluate workflow.
 
