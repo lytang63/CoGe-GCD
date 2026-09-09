@@ -188,11 +188,10 @@ Individual overrides such as `COGE_CUB_ROOT`, `COGE_CARS_ROOT`, `COGE_AIRCRAFT_R
 ## 📜 Citation
 
 ```bibtex
-@inproceedings{tang2026coge,
+@inproceedings{tangcoge,
   title={CoGe-GCD: Reframing Generalized Category Discovery with Compositional Generalization},
   author={Tang, Luyao and Zheng, Jiewei and Huang, Kunze and Chen, Chaoqi and Huang, Yue and Chen, Cheng},
-  booktitle={Proceedings of the International Conference on Machine Learning},
-  year={2026}
+  booktitle={Forty-third International Conference on Machine Learning}
 }
 ```
 
